@@ -12,15 +12,15 @@ import HelloWorld from './components/HelloWorld.vue'
 
       <nav>
         <RouterLink to="/" class="tab">
-          <i class="fa fa-house"></i>
+          <i class="fas fa-circle"></i>
           <span>Home</span>
         </RouterLink>
         <RouterLink to="/gasoline" class="tab">
-          <i class="fa fa-gas-pump"></i>
+          <i class="fas fa-star"></i>
           <span>Gasoline</span>
         </RouterLink>
         <RouterLink to="/about" class="tab">
-          <i class="fa fa-circle-info"></i>
+          <i class="fas fa-question"></i>
           <span>About</span>
         </RouterLink>
       </nav>

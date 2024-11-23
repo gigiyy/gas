@@ -4,6 +4,7 @@ import { Gasoline } from '@/modules/gasoline'
 interface Props {
   editMode: boolean
   formData: {
+    id: number
     date: string
     amount: number
     value: number

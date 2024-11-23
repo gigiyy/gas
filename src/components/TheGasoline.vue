@@ -10,7 +10,7 @@ const editMode = ref(false)
 const formData = ref({
   id: 0,
   date: '',
-  amount: 0,
+  distance: 0,
   value: 0,
 })
 
@@ -18,7 +18,7 @@ const submitForm = () => {
   const newGasoline = new Gasoline(
     editMode.value ? formData.value.id : gasolineStore.getNextId(),
     new Date(formData.value.date),
-    formData.value.amount,
+    formData.value.distance,
     formData.value.value,
   )
 
@@ -34,8 +34,8 @@ const submitForm = () => {
 const resetForm = () => {
   formData.value = {
     id: 0,
-    date: '',
-    amount: 0,
+    date: new Date().toISOString().split('T')[0],
+    distance: 0,
     value: 0,
   }
   editMode.value = false
@@ -45,7 +45,7 @@ const editGasoline = (gasoline: Gasoline) => {
   formData.value = {
     id: gasoline.id,
     date: gasoline.buy_date.toISOString().split('T')[0],
-    amount: gasoline.amount,
+    distance: gasoline.distance,
     value: gasoline.value,
   }
   editMode.value = true

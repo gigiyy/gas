@@ -6,7 +6,7 @@ interface Props {
   formData: {
     id: number
     date: string
-    amount: number
+    distance: number
     value: number
   }
 }
@@ -25,12 +25,12 @@ const emit = defineEmits<{
       <input type="date" id="date" v-model="formData.date" required />
     </div>
     <div>
-      <label for="amount">Amount (L):</label>
-      <input type="number" id="amount" v-model="formData.amount" step="0.01" min="0" required />
+      <label for="distance">Distance (Km):</label>
+      <input type="number" id="distance" v-model="formData.distance" step="1" min="0" required />
     </div>
     <div>
-      <label for="value">Value ($):</label>
-      <input type="number" id="value" v-model="formData.value" step="0.01" min="0" required />
+      <label for="value">Value (¥):</label>
+      <input type="number" id="value" v-model="formData.value" step="1" min="0" required />
     </div>
     <div class="form-buttons">
       <button type="submit" class="btn btn-primary">

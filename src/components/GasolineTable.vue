@@ -18,8 +18,8 @@ const emit = defineEmits<{
       <tr>
         <th>ID</th>
         <th>Date</th>
-        <th>Amount (L)</th>
-        <th>Value ($)</th>
+        <th>Distance (Km)</th>
+        <th>Value (¥)</th>
         <th>Actions</th>
       </tr>
     </thead>
@@ -27,8 +27,8 @@ const emit = defineEmits<{
       <tr v-for="gasoline in gasolines" :key="gasoline.id" class="gasoline-list-item">
         <td>{{ gasoline.id }}</td>
         <td>{{ gasoline.buy_date.toISOString().split('T')[0] }}</td>
-        <td>{{ gasoline.amount }} L</td>
-        <td>${{ gasoline.value }}</td>
+        <td>{{ gasoline.distance }}Km</td>
+        <td>¥{{ gasoline.value }}</td>
         <td>
           <button @click="emit('edit', gasoline)">
             <i class="fas fa-edit"></i>

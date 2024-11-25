@@ -14,18 +14,18 @@ const formData = ref({
   value: 0,
 })
 
-const submitForm = () => {
+const submitForm = async () => {
   const newGasoline = new Gasoline(
-    editMode.value ? formData.value.id : gasolineStore.getNextId(),
+    editMode.value ? formData.value.id : 0,
     new Date(formData.value.date),
     formData.value.distance,
     formData.value.value,
   )
 
   if (editMode.value) {
-    gasolineStore.update(newGasoline)
+    await gasolineStore.update(newGasoline)
   } else {
-    gasolineStore.add(newGasoline)
+    await gasolineStore.add(newGasoline)
   }
 
   resetForm()
@@ -51,8 +51,8 @@ const editGasoline = (gasoline: Gasoline) => {
   editMode.value = true
 }
 
-const removeGasoline = (id: number) => {
-  gasolineStore.remove(id)
+const removeGasoline = async (id: number) => {
+  await gasolineStore.remove(id)
 }
 </script>
 

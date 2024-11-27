@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useGasolineStore } from '@/stores/gasoline'
+import { useGasolineStore } from '@/stores/gasolineStore'
 import { Gasoline } from '@/modules/gasoline'
 import { ref, onMounted } from 'vue'
 import GasolineForm from './GasolineForm.vue'
@@ -28,7 +28,7 @@ onMounted(async () => {
 const submitForm = async () => {
   const newGasoline = new Gasoline(
     editMode.value ? formData.value.id : 0,
-    new Date(formData.value.date),
+    formData.value.date,
     formData.value.distance,
     formData.value.value,
   )
@@ -55,7 +55,7 @@ const resetForm = () => {
 const editGasoline = (gasoline: Gasoline) => {
   formData.value = {
     id: gasoline.id,
-    date: gasoline.buy_date.toISOString().split('T')[0],
+    date: gasoline.buy_date,
     distance: gasoline.distance,
     value: gasoline.value,
   }

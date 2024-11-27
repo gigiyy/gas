@@ -1,5 +1,5 @@
 import { setActivePinia, createPinia } from 'pinia'
-import { useGasolineStore } from '@/stores/gasoline'
+import { useGasolineStore } from '@/stores/gasolineStore'
 import { pool } from '@/config/database'
 import { beforeEach, describe, expect, it, afterAll } from 'vitest'
 import { Gasoline } from '@/modules/gasoline'
@@ -24,7 +24,7 @@ describe('Gasoline Store', () => {
   it('adds a gasoline record', async () => {
     const store = useGasolineStore()
 
-    const testGasoline = new Gasoline(1, new Date('2024-03-20'), 100, 50)
+    const testGasoline = new Gasoline(1, '2024-03-20', 100, 50)
 
     await store.add(testGasoline)
     await store.loadGasolines()
@@ -35,7 +35,7 @@ describe('Gasoline Store', () => {
 
   it('removes a gasoline record', async () => {
     const store = useGasolineStore()
-    const testGasoline = new Gasoline(1, new Date('2024-03-20'), 100, 50)
+    const testGasoline = new Gasoline(1, '2024-03-20', 100, 50)
     await store.add(testGasoline)
     await store.loadGasolines()
     expect(store.gasolines).toHaveLength(1)
@@ -46,10 +46,10 @@ describe('Gasoline Store', () => {
 
   it('updates a gasoline record', async () => {
     const store = useGasolineStore()
-    const testGasoline = new Gasoline(1, new Date('2024-03-20'), 100, 50)
+    const testGasoline = new Gasoline(1, '2024-03-20', 100, 50)
     await store.add(testGasoline)
 
-    const updatedGasoline = new Gasoline(1, new Date('2024-03-20'), 200, 75)
+    const updatedGasoline = new Gasoline(1, '2024-03-20', 200, 75)
     await store.update(updatedGasoline)
     await store.loadGasolines()
 

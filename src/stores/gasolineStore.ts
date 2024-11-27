@@ -12,7 +12,7 @@ export const useGasolineStore = defineStore('gasoline', () => {
       gasolines.value = []
       const result = await pool.query('SELECT * FROM gasolines ORDER BY buy_date DESC')
       gasolines.value = result.rows.map(
-        (row) => new Gasoline(row.id, new Date(row.buy_date), row.distance, row.value),
+        (row) => new Gasoline(row.id, row.buy_date, row.distance, row.value),
       )
     } catch (error) {
       console.error('Error loading gasolines:', error)
@@ -23,11 +23,11 @@ export const useGasolineStore = defineStore('gasoline', () => {
     try {
       const result = await pool.query(
         'INSERT INTO gasolines (buy_date, distance, value) VALUES ($1, $2, $3) RETURNING *',
-        [gasoline.getFormattedDate(), gasoline.distance, gasoline.value],
+        [gasoline.buy_date, gasoline.distance, gasoline.value],
       )
       const newGasoline = new Gasoline(
         result.rows[0].id,
-        Gasoline.fromDateString(result.rows[0].buy_date),
+        result.rows[0].buy_date,
         result.rows[0].distance,
         result.rows[0].value,
       )

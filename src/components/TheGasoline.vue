@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useGasolineStore } from '@/stores/gasoline'
 import { Gasoline } from '@/modules/gasoline'
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import GasolineForm from './GasolineForm.vue'
 import GasolineTable from './GasolineTable.vue'
 
@@ -9,9 +9,20 @@ const gasolineStore = useGasolineStore()
 const editMode = ref(false)
 const formData = ref({
   id: 0,
-  date: '',
+  date: new Date().toISOString().split('T')[0],
   distance: 0,
   value: 0,
+})
+
+console.log('TheGasoline')
+
+onMounted(async () => {
+  try {
+    await gasolineStore.loadGasolines()
+    console.log('gasolineStore', gasolineStore.gasolines)
+  } catch (error) {
+    console.error('Error loading gasolines:', error)
+  }
 })
 
 const submitForm = async () => {

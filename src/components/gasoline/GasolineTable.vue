@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Gasoline } from '@/modules/gasoline'
+import { Gasoline } from './gasoline'
 
 interface Props {
   gasolines: Gasoline[]
@@ -26,7 +26,7 @@ const emit = defineEmits<{
     <tbody>
       <tr v-for="gasoline in gasolines" :key="gasoline.id" class="gasoline-list-item">
         <td>{{ gasoline.id }}</td>
-        <td>{{ gasoline.buy_date.toISOString().split('T')[0] }}</td>
+        <td>{{ gasoline.buy_date }}</td>
         <td>{{ gasoline.distance }}Km</td>
         <td>¥{{ gasoline.value }}</td>
         <td>

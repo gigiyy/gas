@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useGasolineStore } from '@/stores/gasolineStore'
-import { Gasoline } from '@/modules/gasoline'
+import { useGasolineStore } from '@/components/gasoline/gasolineStore'
+import { Gasoline } from '@/components/gasoline/gasoline'
 import { ref, onMounted } from 'vue'
 import GasolineForm from './GasolineForm.vue'
 import GasolineTable from './GasolineTable.vue'

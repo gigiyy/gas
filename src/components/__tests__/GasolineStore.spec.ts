@@ -1,8 +1,8 @@
 import { setActivePinia, createPinia } from 'pinia'
-import { useGasolineStore } from '@/stores/gasolineStore'
+import { useGasolineStore } from '@/components/gasoline/gasolineStore'
 import { pool } from '@/config/database'
 import { beforeEach, describe, expect, it, afterAll } from 'vitest'
-import { Gasoline } from '@/modules/gasoline'
+import { Gasoline } from '@/components/gasoline/gasoline'
 
 describe('Gasoline Store', () => {
   beforeEach(async () => {

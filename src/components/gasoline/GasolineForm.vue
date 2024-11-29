@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Gasoline } from '@/modules/gasoline'
+import { Gasoline } from './gasoline'
 
 interface Props {
   editMode: boolean

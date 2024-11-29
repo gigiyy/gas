@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import { Gasoline } from '@/modules/gasoline'
+import { Gasoline } from './gasoline'
 import { pool } from '@/config/database'
 
 export const useGasolineStore = defineStore('gasoline', () => {
